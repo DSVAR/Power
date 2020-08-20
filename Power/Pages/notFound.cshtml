@@ -1,0 +1,19 @@
+﻿@page
+@model Power.Pages.notFoundModel
+@{
+    ViewData["Title"] = "Not Found";
+}
+
+
+<div class="row">
+    <div class="col text-center">
+        <img src="~/images/NotFound.png" alt="Page NOT found 404" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center">
+        <h1>The resource you are looking wasn't find</h1>
+        <a asp-page="/Employees/employ" class="btn btn-dark" >Click here for return to at home</a>
+    </div>
+</div>
