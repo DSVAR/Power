@@ -39,5 +39,19 @@ namespace Power.Services
         {
             return employeesList.FirstOrDefault(x => x.id == id);
         }
+
+        public Employee Update(Employee UpdatedEmployee)
+        {
+            Employee employee = employeesList.FirstOrDefault(x => x.id == UpdatedEmployee.id);
+
+            if(employee != null)
+            {
+                employee.name = UpdatedEmployee.name;
+                employee.Email= UpdatedEmployee.Email;
+                employee.Departman = UpdatedEmployee.Departman;
+                employee.PhotoPath = UpdatedEmployee.PhotoPath;
+            }
+            return employee;
+        }
     }
 }

@@ -9,5 +9,8 @@ namespace Power.Services
     {
         IEnumerable<Employee> GetAllEmployees();
         Employee GetEmployee(int id);
+        Employee Update(Employee UpdatedEmployee);
+
+      
     }
 }

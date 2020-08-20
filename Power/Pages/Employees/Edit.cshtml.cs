@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Power.Models;
@@ -18,6 +19,9 @@ namespace Power.Pages.Employees
            _employeeRepository = employeeRepository;
         }
         public Employee Employee{ get; set; }
+
+        [BindProperty]
+        public IFormFile Photo{ get; set; }
         public IActionResult OnGet(int id)
         {
             Employee = _employeeRepository.GetEmployee(id);
@@ -25,6 +29,11 @@ namespace Power.Pages.Employees
             if (Employee == null) return RedirectToPage("/NotFound");
 
             return Page();
+        }
+        public IActionResult OnPost(Employee employee)
+        {
+            Employee = _employeeRepository.Update(employee);
+            return RedirectToPage("employ");
         }
     }
 }

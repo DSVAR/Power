@@ -2,6 +2,8 @@
 @model Power.Pages.Employees.EditModel
 @{
     ViewData["Title"] = "Edit";
+
+    var PhotoPath = $"/images/{Model.Employee.PhotoPath ?? "noimage.png"}";
 }
 
 <!--Создаём форму редактирования-->
@@ -56,12 +58,24 @@
                             <hr />
                         </div>
 
+                        <div class="col-lg-3 ">
+                            <div>
+                                    <img class="card-img-top imageThumbnail border border-primary" src="@PhotoPath" />  
+                                
+                                <div class="custom-file ">
+                                    <input asp-for="Photo" class="custom-file-input form-control"/>
+                                    <label class="custom-file-label text-left ">CLICK CLACKs</label>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="card-footer text-center" style="background-color: rgba(0, 0, 0, 0.25);">
                                 <button type="submit" class="btn btn-success buttonShadow">Update</button>
-                                <a asp-page="index" class="btn btn-danger buttonShadow">Cancel</a>
+                                <a asp-page="/Employees/employ" class="btn btn-danger buttonShadow">Cancel</a>
                             </div>
                         </div>
                     </div>
