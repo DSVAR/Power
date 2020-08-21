@@ -7,10 +7,10 @@
 }
 
 <!--Создаём форму редактирования-->
-<form method="post" class="mt-3">
+<form method="post" class="mt-3" enctype="multipart/form-data">
     <!--Создаём скрытое поле для параметра ID-->
     <input type="hidden" asp-for="Employee.id" />
-
+    <input type="hidden" asp-for="Employee.PhotoPath" />
     <!--Добавляем поля редактирования-->
     <div class="row justify-content-center m-3">
         <div class="col col-lg-8">
@@ -60,10 +60,10 @@
 
                         <div class="col-lg-3 ">
                             <div>
-                                    <img class="card-img-top imageThumbnail border border-primary" src="@PhotoPath" />  
-                                
+                                <img class="card-img-top imageThumbnail border border-primary" src="@PhotoPath" />
+
                                 <div class="custom-file ">
-                                    <input asp-for="Photo" class="custom-file-input form-control"/>
+                                    <input asp-for="Photo" class="custom-file-input form-control" />
                                     <label class="custom-file-label text-left ">CLICK CLACKs</label>
                                 </div>
                             </div>
@@ -83,4 +83,16 @@
             </div>
         </div>
     </div>
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+        </script>
+    }
+
 </form>
